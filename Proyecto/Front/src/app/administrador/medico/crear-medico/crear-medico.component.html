@@ -1,0 +1,84 @@
+<form class="example-form" (ngSubmit)="onSubmit()">
+
+
+  <div align="center">
+    <mat-form-field class="example-full-width">
+      <mat-label>Cedula</mat-label>
+      <input matInput [formControl]="CC" [errorStateMatcher]="matcher" placeholder="Ej. 1000111222">
+      <mat-error *ngIf="CC.hasError('pattern') && !CC.hasError('required')">
+        Por favor, introduce solo números
+      </mat-error>
+      <mat-error *ngIf="CC.hasError('required')">
+        El CC <strong>es requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div align="center">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombres</mat-label>
+      <input matInput [formControl]="Nombre" [errorStateMatcher]="matcher" placeholder="Ej. Juanito">
+      <mat-error *ngIf=" Nombre.hasError('pattern') && !Nombre.hasError('required')">
+        Por favor, introduce solo letras
+      </mat-error>
+      <mat-error *ngIf="Nombre.hasError('required')">
+        El nombre <strong>es requerido</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <div align="center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Apellidos</mat-label>
+        <input matInput [formControl]="Apellidos" [errorStateMatcher]="matcher" placeholder="Ej. Pérez">
+        <mat-error *ngIf=" Apellidos.hasError('pattern') && !Apellidos.hasError('required')">
+          Por favor, introduce solo letras
+        </mat-error>
+        <mat-error *ngIf="Apellidos.hasError('required')">
+          El Apellido <strong>es requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div align="center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Telefono</mat-label>
+        <input matInput [formControl]="Telefono" [errorStateMatcher]="matcher" placeholder="Ej. 4444444">
+        <mat-error *ngIf="Telefono.hasError('pattern') && !Telefono.hasError('required')">
+          Por favor, introduce solo números
+        </mat-error>
+        <mat-error *ngIf="Telefono.hasError('required')">
+          El Telefono <strong>es requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div align="center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="Email" [errorStateMatcher]="matcher" placeholder="Ej. pat@ejemplo.com">
+        <mat-error *ngIf="Email.hasError('email') && !Email.hasError('required')">
+          Por favor, introduce una dirección de correo electrónico válida
+        </mat-error>
+        <mat-error *ngIf="Email.hasError('required')">
+          El email <strong>es requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div align="center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Direccion</mat-label>
+        <input matInput [formControl]="Direccion" [errorStateMatcher]="matcher" placeholder="Ej. Calle 00 # 00 - 00">
+        <mat-error *ngIf="Direccion.hasError('required')">
+          La direccion <strong>es requerida</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="example-button-row">
+      <button mat-flat-button color="primary" type="submit">Guardar</button>
+    </div>
+
+  </div>
+</form>

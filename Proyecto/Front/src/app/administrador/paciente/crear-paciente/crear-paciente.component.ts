@@ -1,5 +1,7 @@
+import { Usuario } from './../usuario';
+import { ServicioService } from './../servicio.service';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ApiService } from '../api.service';
+
 
 @Component({
   selector: 'app-crear-paciente',
@@ -9,9 +11,13 @@ import { ApiService } from '../api.service';
 })
 export class CrearPacienteComponent implements OnInit {
 
-  constructor(private api: ApiService) { }
+  constructor(public ServicioService:ServicioService ) { }
 
   ngOnInit(): void {
+    this.ServicioService.listarUsuarios();
+  }
+  llenarFormularioPaciente(usuario:Usuario){
+    this.ServicioService.formularioRegistroPaciente.patchValue(usuario);
   }
 
 }

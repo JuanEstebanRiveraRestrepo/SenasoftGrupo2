@@ -14,10 +14,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { CrearPacienteComponent } from './paciente/crear-paciente/crear-paciente.component';
+import { RolComponent } from './rol/rol/rol.component';
 
 
 @NgModule({
-  declarations: [AdministradorComponent, MedicoComponent, PacienteComponent, PacienteFamiliarComponent, CrearMedicoComponent, ListarMedicoComponent, DetalleMedicoComponent, CrearPacienteComponent],
+  declarations: [AdministradorComponent, MedicoComponent, PacienteComponent, PacienteFamiliarComponent, CrearMedicoComponent, ListarMedicoComponent, DetalleMedicoComponent, CrearPacienteComponent, RolComponent],
   imports: [
     CommonModule,MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule,MatButtonModule
   ],

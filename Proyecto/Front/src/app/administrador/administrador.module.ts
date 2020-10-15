@@ -25,10 +25,13 @@ import { AppRoutingModule } from '../app-routing.module';
 import {MatCardModule} from '@angular/material/card';
 
 import { AdministradorService } from '../services/administrador.service';
+import { CrearPacienteFamiliarComponent } from '../administrador/paciente-familiar/crear-paciente-familiar/crear-paciente-familiar.component';
+import { ListarPacienteFamiliarComponent } from '../administrador/paciente-familiar/listar-paciente-familiar/listar-paciente-familiar.component';
+import { DetallePacienteFamiliarComponent } from '../administrador/paciente-familiar/detalle-paciente-familiar/detalle-paciente-familiar.component';
 
 
 @NgModule({
-  declarations: [AdministradorComponent, MedicoComponent, PacienteComponent, PacienteFamiliarComponent, CrearMedicoComponent, ListarMedicoComponent, DetalleMedicoComponent],
+  declarations: [AdministradorComponent, MedicoComponent, PacienteComponent, PacienteFamiliarComponent, CrearMedicoComponent, ListarMedicoComponent, DetalleMedicoComponent, CrearPacienteFamiliarComponent, ListarPacienteFamiliarComponent, DetallePacienteFamiliarComponent],
   imports: [
     CommonModule,MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule,MatButtonModule,
     MatTableModule,MatPaginatorModule,MatToolbarModule,MatIconModule,CdkTableModule,MatSortModule,

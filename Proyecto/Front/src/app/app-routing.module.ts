@@ -13,6 +13,7 @@ import {
 } from './administrador/administrador.component';
 import {DetalleMedicoComponent} from './administrador/medico/detalle-medico/detalle-medico.component'
 import {MedicoComponent} from './administrador/medico/medico.component'
+import {PacienteFamiliarComponent} from './administrador/paciente-familiar/paciente-familiar.component'
 
 const routes: Routes = [{
     path: '',
@@ -29,9 +30,11 @@ const routes: Routes = [{
       children: [{
           path: 'medico',
           component: MedicoComponent
-        },
-        {path: 'detallem',
-            component: DetalleMedicoComponent}
+        },{
+          path: 'PacienteFamiliar',
+          component: PacienteFamiliarComponent
+
+        }
       ]
     }, ]
   },

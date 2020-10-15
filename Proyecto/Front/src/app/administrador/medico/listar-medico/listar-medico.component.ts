@@ -36,6 +36,7 @@ export class ListarMedicoComponent implements OnInit, AfterViewInit {
 
     
   }
+  
   displayedColumns: string[] = ['Cedula', 'Nombre', 'Apellidos', 'Email', 'Acciones'];
   dataSource = new MatTableDataSource < Medico > ([]);
   @ViewChild(MatPaginator) paginator: MatPaginator;

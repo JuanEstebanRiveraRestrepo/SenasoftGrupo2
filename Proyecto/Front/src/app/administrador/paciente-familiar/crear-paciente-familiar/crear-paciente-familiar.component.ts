@@ -1,23 +1,10 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import {
-  AdministradorService
-} from '../../../services/administrador.service'
-import {
-  FormBuilder,
-  FormControl,
-  FormGroupDirective,
-  NgForm,
-  Validators
-} from '@angular/forms';
-import {
-  ErrorStateMatcher
-} from '@angular/material/core';
-import {
-  Medico
-} from 'src/app/models/medico';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { PacienteFamiliar } from 'src/app/models/paciente-familiar';
+import { AdministradorService } from 'src/app/services/administrador.service';
+
+
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -27,11 +14,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-crear-medico',
-  templateUrl: './crear-medico.component.html',
-  styleUrls: ['./crear-medico.component.css']
+  selector: 'app-crear-paciente-familiar',
+  templateUrl: './crear-paciente-familiar.component.html',
+  styleUrls: ['./crear-paciente-familiar.component.css']
 })
-export class CrearMedicoComponent implements OnInit {
+export class CrearPacienteFamiliarComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, public administradorService: AdministradorService) {}
   exRegularLetras: any = "^[a-zA-ZÀ-ÿ\u00f1\u00d1 _]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1 _]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 _]+$";
@@ -62,15 +49,11 @@ export class CrearMedicoComponent implements OnInit {
   Direccion = new FormControl('', [
     Validators.required,
   ]);
-  Cargo = new FormControl('', [
+  Titular = new FormControl('', [
     Validators.required,
-    Validators.pattern(this.exRegularLetras),
   ]);
 
-  Especialidad = new FormControl('', [
-    Validators.required,
-    Validators.pattern(this.exRegularLetras),
-  ]);
+
 
   matcher = new MyErrorStateMatcher();
 
@@ -81,33 +64,31 @@ export class CrearMedicoComponent implements OnInit {
       return false;
   }
 
-  medico: Medico = {
+  pacienteFamiliar: PacienteFamiliar = {
     cedula: "",
     nombre: "",
     apellido: "",
     telefono: "",
     direccion: "",
-    cargo: "",
-    especialidad: ""
+    titular: ""
   }
 
   onSubmit() {
 
-    this.medico = {
+    this.pacienteFamiliar = {
       cedula: this.CC.value,
       nombre: this.Nombre.value,
       apellido: this.Apellidos.value,
       telefono: this.Telefono.value,
       direccion: this.Direccion.value,
-      cargo: this.Cargo.value,
-      especialidad: this.Especialidad.value
+      titular: this.Titular.value
     }
 
-    console.log(this.medico)
+    console.log(this.pacienteFamiliar)
 
-    this.administradorService.medico = this.medico
+    this.administradorService.pacienteFamiliar = this.pacienteFamiliar
 
-    this.administradorService.crear().subscribe(r => {
+    this.administradorService.crearPF(this.Titular.value).subscribe(r => {
       console.log(r);
 
 
@@ -121,4 +102,5 @@ export class CrearMedicoComponent implements OnInit {
 
 
   ngOnInit(): void {}
+
 }

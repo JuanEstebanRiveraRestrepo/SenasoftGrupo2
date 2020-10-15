@@ -12,36 +12,38 @@ export class AdministradorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  menu = true;
-  contenido = true;
-  salud = false;
-  comunidad = false;
-  informacion = false;
+  Medicos = true;
+  Paciente = false;
+  Familiar = false;
+  Administrador = false;
+
 
   mc() {
-    this.contenido = true;
-    this.salud = false;
-    this.comunidad = false;
-    this.informacion = false;
+    this.Medicos = true;
+    this.Paciente = false;
+    this.Familiar = false;
+    this.Administrador = false;
     
   }
   ms() {
-    this.contenido = false;
-    this.salud = true;
-    this.comunidad = false;
-    this.informacion = false;
+    this.Medicos = false;
+    this.Paciente = true;
+    this.Familiar = false;
+    this.Administrador = false;
   }
   mco() {
-    this.contenido = false;
-    this.salud = false;
-    this.comunidad = true;
-    this.informacion = false;
+    this.Medicos = false;
+    this.Paciente = false;
+    this.Familiar = true;
+    this.Administrador = false;
   }
   mi() {
-    this.contenido = false;
-    this.salud = false;
-    this.comunidad = false;
-    this.informacion = true;
+    this.Medicos = false;
+    this.Paciente = false;
+    this.Familiar = false;
+    this.Administrador = true;
   }
+
+  menu= true
 
 }

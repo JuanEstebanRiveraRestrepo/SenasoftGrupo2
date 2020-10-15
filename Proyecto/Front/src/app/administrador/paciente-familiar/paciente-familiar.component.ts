@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListarPacienteFamiliarComponent } from './listar-paciente-familiar/listar-paciente-familiar.component';
 
 @Component({
   selector: 'app-paciente-familiar',
@@ -10,6 +11,10 @@ export class PacienteFamiliarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  tomar(){
+    return ListarPacienteFamiliarComponent.vd
   }
 
 }

@@ -1,1 +1,13 @@
-<p>paciente-familiar works!</p>
+<router-outlet></router-outlet>
+    <div style="position: relative; left: 20%; width: 77%;" class="jumbotron row">
+        <div style="width: 50%;">
+          <app-listar-paciente-familiar></app-listar-paciente-familiar>
+        </div>
+        <div style="width: 40%; left: 5%; position: relative;">
+
+            <app-crear-paciente-familiar *ngIf="!tomar()"></app-crear-paciente-familiar>
+            <app-detalle-paciente-familiar *ngIf="tomar()"></app-detalle-paciente-familiar>
+
+          
+        </div>
+      </div>

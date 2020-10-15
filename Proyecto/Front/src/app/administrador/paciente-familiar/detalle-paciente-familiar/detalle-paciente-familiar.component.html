@@ -1,0 +1,41 @@
+
+<div class="row">
+    <mat-card class="dm">Id</mat-card>
+    <mat-card class="dm">{{tommar()._id.$oid}}</mat-card>
+
+</div>
+<div class="row">
+    <mat-card class="dm">Cedula</mat-card>
+    <mat-card class="dm" >{{tommar().cedula}}</mat-card>
+</div>
+<div class="row">
+    <mat-card class="dm">Nombres</mat-card>
+    <mat-card class="dm" >{{tommar().nombre}}</mat-card>
+</div>
+<div class="row">
+    <mat-card class="dm">Apellidos</mat-card>
+    <mat-card class="dm" >{{tommar().apellido}}</mat-card>
+</div>
+
+<div class="row">
+    <mat-card class="dm">Telefono</mat-card>
+    <mat-card class="dm" >{{tommar().telefono}}</mat-card>
+</div>
+<div class="row">
+    <mat-card class="dm">Direccion</mat-card>
+    <mat-card class="dm" >{{tommar().direccion}}</mat-card>
+</div>
+<div class="row">
+    <mat-card class="dm">Titular</mat-card>
+    <mat-card class="dm" >{{tommar().titular}}</mat-card>
+</div>
+
+<div class="row">
+    <mat-card class="dm">Usuario</mat-card>
+    <mat-card class="dm" >{{tommar().Usuario}}</mat-card>
+</div>
+
+
+
+
+<button (click)='meter()'></button>

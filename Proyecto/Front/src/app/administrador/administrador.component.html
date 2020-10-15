@@ -1,2 +1,33 @@
-<app-medico></app-medico>
-<app-rol></app-rol>
+
+<p>
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="menu= !menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Administrador</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+  
+  <div class="sidebar" *ngIf='menu'>
+    <br>
+    <br>
+    <a *ngIf="Medicos" (click)="mc()"  href="/Admin/medico" class="ac" >Médicos</a>
+    <a *ngIf="!Medicos" (click)="mc()" href="/Admin/medico" >Médicos</a>
+    <a *ngIf="Paciente" (click)="ms()"  class="ac" >Paciente Titular</a>
+    <a *ngIf="!Paciente" (click)="ms()"  >Paciente Titular</a>
+    <a *ngIf="Familiar" (click)="mco()" href="/Admin/PacienteFamiliar" class="ac" >Paciente Familiar</a>
+    <a *ngIf="!Familiar" (click)="mco()"  href="/Admin/PacienteFamiliar" >Paciente Familiar</a>
+    <a *ngIf="Administrador" (click)="mi()"  class="ac" >Administrador</a>
+    <a *ngIf="!Administrador" (click)="mi()" >Administrador</a>
+
+
+    
+  </div>
+
+
+    <router-outlet></router-outlet>
+

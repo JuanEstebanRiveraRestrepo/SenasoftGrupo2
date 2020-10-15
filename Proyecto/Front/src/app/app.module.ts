@@ -17,16 +17,24 @@ import { RouterModule } from '@angular/router';
 
 
 
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatCardModule} from '@angular/material/card';
+
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AdministradorModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, MatInputModule,MatButtonModule, HttpClientModule,
-    MatTableModule, RouterModule
+    MatTableModule, RouterModule,
+    AdministradorModule, MatFormFieldModule, FormsModule, ReactiveFormsModule,
+    MatInputModule,MatButtonModule,MatTableModule,MatPaginatorModule,MatCardModule,HttpClientModule
   ],
   providers: [ServicioService],
   bootstrap: [AppComponent]

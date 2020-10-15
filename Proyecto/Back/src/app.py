@@ -10,6 +10,8 @@ from models.pacientefamiliar import PacienteFamiliar
 
 app = Flask(__name__)
 
+
+#Registro de Blueprint para utilizar aplicaciones fue de app
 app.register_blueprint(Rol)
 app.register_blueprint(Usuario)
 app.register_blueprint(Medico)

@@ -5,8 +5,8 @@ from flask.globals import request
 
 
 from conexion import mongo
-from models.pacienteafiliado import buscarPacienteAfiliadoPorNombre
-from models.medico import buscarMedicoPorNombre
+
+
 
 Solicitud = Blueprint('solicitud', __name__)
 
@@ -18,7 +18,7 @@ def obtenerSolicitudes():
     return respuesta 
 
 @Solicitud.route('/solicitud', methods=['POST'])
-def creaSolicitud():
+def crearSolicitud():
     paciente = request.json['paciente']
     medicoAnterior = request.json['medicoAnterior']
     medicoCambio = request.json['medicoCambio']

@@ -8,6 +8,8 @@ from conexion import mongo
 
 Rol = Blueprint('rol', __name__)
 
+
+#Ruta y Metodo para obtener roles
 @Rol.route('/rol')
 def obtenerRol():
     roles = mongo.db.rol.find()
@@ -15,8 +17,9 @@ def obtenerRol():
     
     return respuesta 
 
+#Ruta y Metodo para crear un rol
 @Rol.route('/rol', methods=['POST'])
-def creaRol():
+def crearRol():
     nombre = request.json['nombre']
     
     if nombre: 
@@ -26,12 +29,15 @@ def creaRol():
         
         return jsonify({'mensaje': 'Se agrego rol'}) 
 
+
+#Ruta y Metodo para buscar un rol
 @Rol.route('/rol/<id>')
 def buscarRol(id):
     rol = mongo.db.rol.find_one({'_id': ObjectId(id)})
     respuesta = json_util.dumps(rol)
     return respuesta
     
+#Ruta y Metodo para editar roles
 @Rol.route('/rol/<id>', methods=['PUT'])
 def editarRol(id):
     nombre = request.json['nombre']
@@ -44,6 +50,7 @@ def editarRol(id):
         respuesta = jsonify({'mensaje': 'se edito el rol'}) 
         return respuesta   
 
+#Ruta y Metodo para eliminar roles
 @Rol.route('/rol/<id>', methods=['DELETE'])
 def eliminarRol(id):
     mongo.db.rol.delete_one({'_id': ObjectId(id)})

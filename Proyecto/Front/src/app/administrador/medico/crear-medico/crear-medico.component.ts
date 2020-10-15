@@ -8,6 +8,7 @@ import {
 import {
   FormBuilder,
   FormControl,
+  FormGroup,
   FormGroupDirective,
   NgForm,
   Validators
@@ -18,6 +19,10 @@ import {
 import {
   Medico
 } from 'src/app/models/medico';
+
+import{ Usuarios }from 'src/app/models/usuarios'
+
+
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -32,6 +37,15 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./crear-medico.component.css']
 })
 export class CrearMedicoComponent implements OnInit {
+
+
+
+
+   llenar(medico:Medico){
+
+      console.log(medico.nombre)
+
+  }
 
   constructor(private formBuilder: FormBuilder, public administradorService: AdministradorService) {}
   exRegularLetras: any = "^[a-zA-ZÀ-ÿ\u00f1\u00d1 _]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1 _]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 _]+$";
@@ -88,7 +102,16 @@ export class CrearMedicoComponent implements OnInit {
     telefono: "",
     direccion: "",
     cargo: "",
-    especialidad: ""
+    especialidad: "",
+    usuario: ""
+  }
+
+  usuario: Usuarios = {
+    correo : "",
+    password: "",
+    rol : ""
+
+    
   }
 
   onSubmit() {
@@ -100,18 +123,32 @@ export class CrearMedicoComponent implements OnInit {
       telefono: this.Telefono.value,
       direccion: this.Direccion.value,
       cargo: this.Cargo.value,
-      especialidad: this.Especialidad.value
+      especialidad: this.Especialidad.value,
+      usuario: this.Email.value
+    }
+
+
+    this.usuario = {
+      correo : this.Email.value,
+      rol : "Medico",
+      password: this.CC.value
     }
 
     console.log(this.medico)
 
     this.administradorService.medico = this.medico
+    this.administradorService.usuario = this.usuario
+
+
+    this.administradorService.crearU().subscribe(r => {
+      console.log(r);
+    })
 
     this.administradorService.crear().subscribe(r => {
       console.log(r);
 
 
-      window.location.reload();
+      // window.location.reload();
     })
 
 

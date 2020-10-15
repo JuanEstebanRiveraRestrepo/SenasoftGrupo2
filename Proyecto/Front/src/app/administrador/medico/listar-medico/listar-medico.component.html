@@ -2,12 +2,12 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
   </mat-form-field>
     
-    <table mat-table [dataSource]="administradorService.lista" matSort  style="background-color:#E9ECEF">
+    <table mat-table [dataSource]="administradorService.lista" matSort  style="background-color:#E9ECEF; vertical-align:middle" class="table table-hover">
   
   
       <ng-container matColumnDef="Cedula" >
          <th mat-header-cell *matHeaderCellDef class="cht" mat-sort-header> Cedula </th>
-        <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
+        <td mat-cell *matCellDef="let element" > {{element.cedula}} </td>
       </ng-container>
   
   
@@ -25,7 +25,7 @@
   
       <ng-container matColumnDef="Email">
         <th mat-header-cell *matHeaderCellDef class="cht" mat-sort-header> Email </th>
-        <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.usuario}} </td>
       </ng-container>
   
       <ng-container matColumnDef="Acciones">
@@ -40,6 +40,11 @@
                     <mat-icon>info</mat-icon>
                 </button>
                </a>
+
+
+
+
+               
             </ng-container>
     </td>
       </ng-container>

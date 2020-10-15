@@ -31,13 +31,17 @@ import { CrearPacienteFamiliarComponent } from '../administrador/paciente-famili
 import { ListarPacienteFamiliarComponent } from '../administrador/paciente-familiar/listar-paciente-familiar/listar-paciente-familiar.component';
 import { DetallePacienteFamiliarComponent } from '../administrador/paciente-familiar/detalle-paciente-familiar/detalle-paciente-familiar.component';
 import { ListarPacienteComponent } from './paciente/listar-paciente/listar-paciente.component';
+import { UsuariosComponent } from '../administrador/usuarios/usuarios.component';
+
+import { ListarUsuarioComponent } from '../administrador/usuarios/listar-usuario/listar-usuario.component';
+
 
 
 @NgModule({
   declarations: [AdministradorComponent, MedicoComponent, PacienteComponent, 
     PacienteFamiliarComponent, CrearMedicoComponent, ListarMedicoComponent,
      DetalleMedicoComponent, CrearPacienteComponent, RolComponent, ListarPacienteComponent,
-      CrearPacienteFamiliarComponent, ListarPacienteFamiliarComponent, DetallePacienteFamiliarComponent],
+      CrearPacienteFamiliarComponent, ListarPacienteFamiliarComponent, DetallePacienteFamiliarComponent, UsuariosComponent, ListarUsuarioComponent],
   imports: [
     CommonModule,MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule,MatButtonModule,
     MatTableModule,MatPaginatorModule,MatToolbarModule,MatIconModule,CdkTableModule,MatSortModule,
@@ -48,7 +52,7 @@ import { ListarPacienteComponent } from './paciente/listar-paciente/listar-pacie
     CrearPacienteComponent,
   ],
   providers:[
-    AdministradorService
+    AdministradorService, CrearMedicoComponent
   ]
 })
 export class AdministradorModule { }

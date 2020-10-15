@@ -1,102 +1,99 @@
-<form [formGroup]="servicioService.formularioRegistroPaciente" (ngSubmit)="onSubmit()">
-  <div class="contenedor">
+<form class="example-form" (ngSubmit)="onSubmit()">
 
-    <input type="text" formControlName="id" name="id" >
+
+  <div align="center">
     <mat-form-field class="example-full-width">
       <mat-label>Cedula</mat-label>
-      <input matInput  placeholder="Ej. 1000111222" formControlName="cedula" name="cedula">
+      <input matInput [formControl]="CC" [errorStateMatcher]="matcher" placeholder="Ej. 1000111222">
+      <mat-error *ngIf="CC.hasError('pattern') && !CC.hasError('required')">
+        Por favor, introduce solo números
+      </mat-error>
+      <mat-error *ngIf="CC.hasError('required')">
+        El CC <strong>es requerido</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div align="center">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombres</mat-label>
+      <input matInput [formControl]="Nombre" [errorStateMatcher]="matcher" placeholder="Ej. Juanito" value="2455">
+      <mat-error *ngIf=" Nombre.hasError('pattern') && !Nombre.hasError('required')">
+        Por favor, introduce solo letras
+      </mat-error>
+      <mat-error *ngIf="Nombre.hasError('required')">
+        El nombre <strong>es requerido</strong>
+      </mat-error>
     </mat-form-field>
 
-    <!--Mensajes de error-->
-    <div class="alert alert-primary" *ngIf="cedula.invalid && (cedula.touched || cedula.dirty)">
 
-      <div *ngIf="cedula.hasError('required')">
-        La cédula es requerida
-      </div>
+    <div align="center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Apellidos</mat-label>
+        <input matInput [formControl]="Apellidos" [errorStateMatcher]="matcher" placeholder="Ej. Pérez">
+        <mat-error *ngIf=" Apellidos.hasError('pattern') && !Apellidos.hasError('required')">
+          Por favor, introduce solo letras
+        </mat-error>
+        <mat-error *ngIf="Apellidos.hasError('required')">
+          El Apellido <strong>es requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
 
+    <div align="center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Telefono</mat-label>
+        <input matInput [formControl]="Telefono" [errorStateMatcher]="matcher" placeholder="Ej. 4444444">
+        <mat-error *ngIf="Telefono.hasError('pattern') && !Telefono.hasError('required')">
+          Por favor, introduce solo números
+        </mat-error>
+        <mat-error *ngIf="Telefono.hasError('required')">
+          El Telefono <strong>es requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div align="center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="Email" [errorStateMatcher]="matcher" placeholder="Ej. pat@ejemplo.com">
+        <mat-error *ngIf="Email.hasError('email') && !Email.hasError('required')">
+          Por favor, introduce una dirección de correo electrónico válida
+        </mat-error>
+        <mat-error *ngIf="Email.hasError('required')">
+          El email <strong>es requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div align="center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Direccion</mat-label>
+        <input matInput [formControl]="Direccion" [errorStateMatcher]="matcher" placeholder="Ej. Calle 00 # 00 - 00">
+        <mat-error *ngIf="Direccion.hasError('required')">
+          La direccion <strong>es requerida</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div align="center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Doctor</mat-label>
+        <input matInput [formControl]="Medico" [errorStateMatcher]="matcher" placeholder="Ej. Pérez">
+        <mat-error *ngIf=" Medico.hasError('pattern') && !Medico.hasError('required')">
+          Por favor, introduce solo letras
+        </mat-error>
+        <mat-error *ngIf="Medico.hasError('required')">
+          El Apellido <strong>es requerido</strong>
+        </mat-error>
+      </mat-form-field>
     </div>
 
 
-
-
-  <mat-form-field class="example-full-width">
-    <input matInput type="text" placeholder="Nombre" formControlName="nombre" name="nombre">
-  </mat-form-field>
-
-  <div class="alert alert-primary" *ngIf="nombre.invalid && (nombre.touched || nombre.dirty)">
-
-    <div *ngIf="nombre.hasError('required')">
-      El nombre es requerido
+    <div class="example-button-row">
+      <button mat-flat-button color="primary" type="submit"  >Guardar</button>
     </div>
 
   </div>
-
-
-  <mat-form-field class="example-full-width">
-    <input matInput type="text" placeholder="apellido" formControlName="apellido" name="apellido">
-  </mat-form-field>
-
-  <div class="alert alert-primary" *ngIf="apellido.invalid && (apellido.touched || apellido.dirty)">
-
-    <div *ngIf="apellido.hasError('required')">
-      Apellidos requeridos
-    </div>
-
-  </div>
-
-
-  <mat-form-field class="example-full-width">
-    <input matInput type="text" placeholder="Teléfono" formControlName="telefono" name="telefono">
-  </mat-form-field>
-
-  <div class="alert alert-primary" *ngIf="telefono.invalid && (telefono.touched || telefono.dirty)">
-
-    <div *ngIf="telefono.hasError('required')">
-      Teléfono es requerido
-    </div>
-
-  </div>
-
-  <mat-form-field class="example-full-width">
-    <input matInput type="email" placeholder="E-mail" formControlName="correo" name="correo">
-  </mat-form-field>
-
-  <div class="alert alert-primary" *ngIf="correo.invalid && (correo.touched || correo.dirty)">
-
-    <div *ngIf="correo.hasError('required')">
-      El correo electrónico es requerido
-    </div>
-
-  </div>
-
-  <mat-form-field class="example-full-width">
-    <input matInput type="text" placeholder="Médico" formControlName="medico" name="medico">
-  </mat-form-field>
-
-  <div class="alert alert-primary" *ngIf="medico.invalid && (medico.touched || medico.dirty)">
-
-    <div *ngIf="medico.hasError('required')">
-      El médico es obligatorio
-    </div>
-
-  </div>
-
-  <mat-form-field class="example-full-width">
-    <input matInput type="text" placeholder="Dirección" formControlName="direccion" name="direccion">
-  </mat-form-field>
-
-  <div class="alert alert-primary" *ngIf="direccion.invalid && (direccion.touched || direccion.dirty)">
-
-    <div *ngIf="direccion.hasError('required')">
-      Dirección solicitada
-    </div>
-
-  </div>
-
-  <div class="example-button-row">
-    <button mat-flat-button color="primary"  type="submit">Guardar</button>
-    <a [routerLink]="['/administrador/paciente/crear-paciente/crear-paciente.component.html']">Ver lista</a>
-    <a href="/administrador/paciente/crear-paciente/crear-paciente.component.html">Ver lista</a>
-  </div>
-</div>
 </form>
+

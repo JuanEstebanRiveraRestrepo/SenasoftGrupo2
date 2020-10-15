@@ -22,6 +22,7 @@ import {
 import {
   HttpClient
 } from '@angular/common/http';
+import { CrearMedicoComponent } from '../crear-medico/crear-medico.component';
 
 @Component({
   selector: 'app-listar-medico',
@@ -31,14 +32,16 @@ import {
 export class ListarMedicoComponent implements OnInit, AfterViewInit {
   lista: any
 
-  constructor(public administradorService: AdministradorService, private htttp: HttpClient) {
+  constructor(public administradorService: AdministradorService, public crearMedicoComponent:CrearMedicoComponent) {
+
+    this.administradorService.listar();
     
 
     
   }
   
   displayedColumns: string[] = ['Cedula', 'Nombre', 'Apellidos', 'Email', 'Acciones'];
-  dataSource = new MatTableDataSource < Medico > ([]);
+  dataSource = new MatTableDataSource (this.administradorService.tomarlista());
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   med = []
@@ -88,6 +91,12 @@ export class ListarMedicoComponent implements OnInit, AfterViewInit {
 
 
 
+
+  }
+
+  llenarFormularioPaquetes(medico:Medico){
+
+    this.crearMedicoComponent.llenar(medico);
 
   }
 

@@ -17,7 +17,7 @@
   <div align="center">
     <mat-form-field class="example-full-width">
       <mat-label>Nombres</mat-label>
-      <input matInput [formControl]="Nombre" [errorStateMatcher]="matcher" placeholder="Ej. Juanito">
+      <input matInput [formControl]="Nombre" [errorStateMatcher]="matcher" placeholder="Ej. Juanito" value="2455">
       <mat-error *ngIf=" Nombre.hasError('pattern') && !Nombre.hasError('required')">
         Por favor, introduce solo letras
       </mat-error>

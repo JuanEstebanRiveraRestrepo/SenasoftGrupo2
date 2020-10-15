@@ -1,10 +1,8 @@
-export interface Medico {
+export interface Paciente {
     nombre: string;
     apellido: string;
     telefono: string;
     cedula:string;
     direccion: string;
-    cargo:string;
-    especialidad:string;
-    usuario:string;
+    medico: string;
 }

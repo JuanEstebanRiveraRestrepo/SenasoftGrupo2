@@ -14,6 +14,7 @@ import {
 import {PacienteComponent} from './administrador/paciente/paciente.component'
 import {MedicoComponent} from './administrador/medico/medico.component'
 import {PacienteFamiliarComponent} from './administrador/paciente-familiar/paciente-familiar.component'
+import {UsuariosComponent} from './administrador/usuarios/usuarios.component'
 
 const routes: Routes = [{
     path: '',
@@ -38,6 +39,11 @@ const routes: Routes = [{
         {
           path: 'Paciente',
           component: PacienteComponent
+
+        },
+        {
+          path: 'Usuario',
+          component: UsuariosComponent
 
         }
       ]

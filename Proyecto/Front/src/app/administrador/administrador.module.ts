@@ -13,15 +13,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { CrearPacienteComponent } from './paciente/crear-paciente/crear-paciente.component';
 
 
 @NgModule({
-  declarations: [AdministradorComponent, MedicoComponent, PacienteComponent, PacienteFamiliarComponent, CrearMedicoComponent, ListarMedicoComponent, DetalleMedicoComponent],
+  declarations: [AdministradorComponent, MedicoComponent, PacienteComponent, PacienteFamiliarComponent, CrearMedicoComponent, ListarMedicoComponent, DetalleMedicoComponent, CrearPacienteComponent],
   imports: [
     CommonModule,MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule,MatButtonModule
   ],
   exports:[
-    AdministradorComponent
+    AdministradorComponent,
+    CrearPacienteComponent
   ]
 })
 export class AdministradorModule { }

@@ -49,6 +49,12 @@ export class AdministradorService {
     return this.http.delete(this.rootURL+'medico/'+id);
 
   }
+  editar(id){
+
+    return this.http.put(this.rootURL+'medico/'+id,
+    this.medico);
+    
+  }
 
 
   listarPF(){

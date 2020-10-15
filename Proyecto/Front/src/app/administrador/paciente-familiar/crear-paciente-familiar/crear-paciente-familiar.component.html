@@ -1,9 +1,13 @@
 <form class="example-form" (ngSubmit)="onSubmit()">
 
 
+
+ 
+
     <div align="center">
       <mat-form-field class="example-full-width">
         <mat-label>Cedula</mat-label>
+
         <input matInput [formControl]="CC" [errorStateMatcher]="matcher" placeholder="Ej. 1000111222">
         <mat-error *ngIf="CC.hasError('pattern') && !CC.hasError('required')">
           Por favor, introduce solo números

@@ -74,10 +74,6 @@ export class ListarPacienteComponent implements OnInit {
       this.administradorService.eliminarP(id).subscribe(r => {
         this.administradorService.listarP();})}
 
-
-
-
-
   }
 
   llenarFormularioPaquetes(medico:Medico){

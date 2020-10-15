@@ -1,10 +1,16 @@
 <form class="example-form" (ngSubmit)="onSubmit()">
 
 
+
+      <input [formControl]="Id"  type="hidden" >
+
+
+
+
   <div align="center">
     <mat-form-field class="example-full-width">
       <mat-label>Cedula</mat-label>
-      <input matInput [formControl]="CC" [errorStateMatcher]="matcher" placeholder="Ej. 1000111222">
+      <input matInput [formControl]="CC" [errorStateMatcher]="matcher" placeholder="Ej. 1000111222"  >
       <mat-error *ngIf="CC.hasError('pattern') && !CC.hasError('required')">
         Por favor, introduce solo números
       </mat-error>
@@ -17,7 +23,7 @@
   <div align="center">
     <mat-form-field class="example-full-width">
       <mat-label>Nombres</mat-label>
-      <input matInput [formControl]="Nombre" [errorStateMatcher]="matcher" placeholder="Ej. Juanito" value="2455">
+      <input matInput [formControl]="Nombre" [errorStateMatcher]="matcher" placeholder="Ej. Juanito" >
       <mat-error *ngIf=" Nombre.hasError('pattern') && !Nombre.hasError('required')">
         Por favor, introduce solo letras
       </mat-error>

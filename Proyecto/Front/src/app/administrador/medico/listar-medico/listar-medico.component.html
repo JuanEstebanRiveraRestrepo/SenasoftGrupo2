@@ -2,7 +2,7 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
   </mat-form-field>
     
-    <table mat-table [dataSource]="administradorService.lista" matSort  style="background-color:#E9ECEF; vertical-align:middle" class="table table-hover">
+    <table mat-table [dataSource]="administradorService.lista" matSort  style="background-color:#E9ECEF; vertical-align:middle">
   
   
       <ng-container matColumnDef="Cedula" >
@@ -37,6 +37,11 @@
                 </button>
                <a >
                 <button (click)="tomar(element)" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" style="color: black;">
+                    <mat-icon>info</mat-icon>
+                </button>
+               </a>
+               <a >
+                <button (click)="crearMedicoComponent.hola()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" style="color: black;">
                     <mat-icon>info</mat-icon>
                 </button>
                </a>

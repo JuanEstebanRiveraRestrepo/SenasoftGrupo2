@@ -34,6 +34,7 @@ import { ListarPacienteComponent } from './paciente/listar-paciente/listar-pacie
 import { UsuariosComponent } from '../administrador/usuarios/usuarios.component';
 
 import { ListarUsuarioComponent } from '../administrador/usuarios/listar-usuario/listar-usuario.component';
+import { EditarMedicoComponent } from '../administrador/medico/editar-medico/editar-medico.component';
 
 
 
@@ -41,7 +42,7 @@ import { ListarUsuarioComponent } from '../administrador/usuarios/listar-usuario
   declarations: [AdministradorComponent, MedicoComponent, PacienteComponent, 
     PacienteFamiliarComponent, CrearMedicoComponent, ListarMedicoComponent,
      DetalleMedicoComponent, CrearPacienteComponent, RolComponent, ListarPacienteComponent,
-      CrearPacienteFamiliarComponent, ListarPacienteFamiliarComponent, DetallePacienteFamiliarComponent, UsuariosComponent, ListarUsuarioComponent],
+      CrearPacienteFamiliarComponent, ListarPacienteFamiliarComponent, DetallePacienteFamiliarComponent, UsuariosComponent, ListarUsuarioComponent, EditarMedicoComponent],
   imports: [
     CommonModule,MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule,MatButtonModule,
     MatTableModule,MatPaginatorModule,MatToolbarModule,MatIconModule,CdkTableModule,MatSortModule,

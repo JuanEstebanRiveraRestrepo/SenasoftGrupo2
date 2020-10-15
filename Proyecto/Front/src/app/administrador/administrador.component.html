@@ -21,10 +21,8 @@
     <a *ngIf="!Paciente" (click)="ms()" href="/Admin/Paciente" >Paciente Titular</a>
     <a *ngIf="Familiar" (click)="mco()" href="/Admin/PacienteFamiliar" class="ac" >Paciente Familiar</a>
     <a *ngIf="!Familiar" (click)="mco()"  href="/Admin/PacienteFamiliar" >Paciente Familiar</a>
-    <a *ngIf="Administrador" (click)="mi()"  class="ac" >Administrador</a>
-    <a *ngIf="!Administrador" (click)="mi()" >Administrador</a>
-    <a *ngIf="Administrador" (click)="mi()"  class="ac" >Usuarios</a>
-    <a *ngIf="!Administrador" (click)="mi()" >Usuarios</a>
+    <a *ngIf="Administrador" (click)="mi()" href="/Admin/Usuario" class="ac" >Usuarios</a>
+    <a *ngIf="!Administrador" (click)="mi()" href="/Admin/Usuario">Usuarios</a>
 
 
     

@@ -40,16 +40,11 @@ export class CrearMedicoComponent implements OnInit {
 
 
 
-
-   llenar(medico:Medico){
-
-      console.log(medico.nombre)
-
-  }
-
   constructor(private formBuilder: FormBuilder, public administradorService: AdministradorService) {}
   exRegularLetras: any = "^[a-zA-ZÀ-ÿ\u00f1\u00d1 _]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1 _]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 _]+$";
   exRegularNumeros: any = "^[0-9]*$";
+
+  Id = new FormControl('0');
 
   Nombre = new FormControl('', [
     Validators.required,
@@ -156,6 +151,30 @@ export class CrearMedicoComponent implements OnInit {
 
   }
 
+  medicof:any
 
-  ngOnInit(): void {}
+
+  llenar (ele:any){
+    this.medicof = ele
+    this.ngOnInit()
+    console.log(this.medicof)
+    
+  }
+
+hola(){
+  this.CC.setValue(234353)
+  console.log("hola")
+
+}
+
+
+
+  ngOnInit(): void {
+
+    this.CC.setValue("")
+
+    
+    
+
+  }
 }

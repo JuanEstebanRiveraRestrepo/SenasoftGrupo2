@@ -1,0 +1,193 @@
+<!-- <form [formGroup]="paqueteService.formularioPaquetes" (ngSubmit)="onSubmit()">
+
+    <img src="assets/Iconos/Imagen6.png" class="crearpaquetes">
+    <h4 style="text-align: center; margin: 2.6%; color: aliceblue; " >Registrar paquetes</h4>
+    <div class="form-group">
+      <div style="color: white;">
+        <label>Numero Casillero</label>
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text " style="background-color:#1A343C;">
+            <i class="fa fa-hashtag" [class.blue-icon]="NumeroCasillero.valid "
+              [class.red-icon]="NumeroCasillero.invalid && NumeroCasillero.touched "> </i>
+          </div>
+        </div>
+        <input type="hidden" name="Codigo">
+  
+        
+        <select name="NumeroCasillero" formControlName="NumeroCasillero" class="form-control" style="background-color:#1A343C;" > 
+          <option *ngFor="let item of clienteCasilleroService.listaClienteCasillero" value={{item.NumeroCasillero}}> {{item.Nombre}} </option>
+        </select>
+      </div>
+      <div class="alert" *ngIf="NumeroCasillero.invalid && (NumeroCasillero.touched || NumeroCasillero.dirty)">
+        <div *ngIf="this.NumeroCasillero.hasError('required')">
+          El nombre es requerido
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <div style="color: white;">
+        <label>Peso</label>
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text" style="background-color:#1A343C;">
+            <i class="fa fa-balance-scale" [class.blue-icon]="Peso.valid "
+              [class.red-icon]="Peso.invalid && Peso.touched "> </i>
+          </div>
+        </div>
+        <input name="Peso" formControlName="Peso" class="form-control" placeholder="Peso" style="background-color:#1A343C;">
+      </div>
+      <div class="alert" *ngIf="Peso.invalid && (Peso.touched || Peso.dirty)">
+        <div *ngIf="this.Peso.hasError('required')">
+          El nombre es requerido
+        </div>
+        <div *ngIf="this.Peso.hasError('pattern')">
+          El nombre debe contener solo NUMEROS
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <div style="color: white;">
+        <label>Estado</label>
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text " style="background-color:#1A343C;">
+            <i class="fa fa-toggle-off" [class.blue-icon]="Estado.valid "
+              [class.red-icon]="Estado.invalid && Estado.touched "> </i>
+          </div>
+        </div>
+        <select name="Estado" ngModel="hola"  formControlName="Estado" class="form-control" style="background-color:#1A343C;" >
+          <option value="1"> En Bodega Miami </option>
+          <option value="2"> En tránsito a Colombia </option>
+          <option value="3"> En bodega Colombia </option>
+          <option value="4"> En tránsito a dirección del cliente </option>
+          <option value="5"> Entregado </option>
+        </select>
+      </div>
+      <div class="alert" *ngIf="Estado.invalid && (Estado.touched || Estado.dirty)">
+        <div *ngIf="this.Estado.hasError('required')">
+          El nombre es requerido
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="form-group">
+      <div style="color: white;">
+        <label>Guia usa</label>
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text" style="background-color:#1A343C;">
+            <i class="fa fa-flag" [class.blue-icon]="GuiaUsa.valid "
+              [class.red-icon]="GuiaUsa.invalid && GuiaUsa.touched "> </i>
+          </div>
+        </div>
+        <input name="GuiaUsa" formControlName="GuiaUsa" class="form-control" placeholder="GuiaUsa" style="background-color:#1A343C;">
+      </div>
+      <div class="alert" *ngIf="GuiaUsa.invalid && (GuiaUsa.touched || GuiaUsa.dirty)">
+        <div *ngIf="this.GuiaUsa.hasError('required')">
+          El nombre es requerido
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="form-group">
+      <div style="color: white;" >
+        <label>Empresa</label>
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text" style="background-color:#1A343C;">
+            <i class="fa fa-building" [class.blue-icon]="Empresa.valid "
+              [class.red-icon]="Empresa.invalid && Empresa.touched "> </i>
+          </div>
+        </div>
+        <select name="Empresa" formControlName="Empresa" class="form-control" style="background-color:#1A343C;">
+          <option *ngFor="let item of transportadorasService.listaTransportadoras" value={{item.IdTransportadora}}> {{item.Nombre}} </option>
+        </select>
+      </div>
+      <div class="alert" *ngIf="Empresa.invalid && (Empresa.touched || Empresa.dirty)">
+        <div *ngIf="this.Estado.hasError('required')">
+          El nombre es requerido
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <div style="color: white;">
+        <label>TipoMercancia</label>
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text " style="background-color:#1A343C;">
+            <i class="fa fa-cube" [class.blue-icon]="TipoMercancia.valid "
+              [class.red-icon]="TipoMercancia.invalid && TipoMercancia.touched "> </i>
+          </div>
+        </div>
+        <select name="TipoMercancia" formControlName="TipoMercancia" class="form-control" style="background-color:#1A343C;">
+          <option *ngFor="let item of mercanciaService.listaMercancia" value={{item.IdTipoMercancia}}> {{item.Nombre}} </option>
+       
+        </select>
+      </div>
+      <div class="alert" *ngIf="TipoMercancia.invalid && (TipoMercancia.touched || TipoMercancia.dirty)">
+        <div *ngIf="this.Estado.hasError('required')">
+          El nombre es requerido
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-group">
+    <div style="color: white;">
+      <label>Guia colombia</label>
+    </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text" style="background-color:#1A343C;">
+            <i class="fa fa-flag" [class.blue-icon]="GuiaColombia.valid "
+              [class.red-icon]="GuiaColombia.invalid && GuiaColombia.touched "> </i>
+          </div>
+        </div>
+        <input name="GuiaColombia" formControlName="GuiaColombia" class="form-control" placeholder="GuiaColombia" style="background-color:#1A343C;">
+      </div>
+      <div class="alert" *ngIf="GuiaColombia.invalid && (GuiaColombia.touched || GuiaColombia.dirty)">
+        <div *ngIf="this.GuiaColombia.hasError('required')">
+          El nombre es requerido
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <div style="color: white;">
+        <label>Valor</label>
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text" style="background-color:#1A343C;">
+            <i class="fa fa-dollar" [class.blue-icon]="Valor.valid "
+              [class.red-icon]="Valor.invalid && Valor.touched "> </i>
+          </div>
+        </div>
+        <input name="Valor" formControlName="Valor" class="form-control" placeholder="Valor" style="background-color:#1A343C;">
+      </div>
+      <div class="alert" *ngIf="Valor.invalid && (Valor.touched || Valor.dirty)">
+        <div *ngIf="this.Valor.hasError('required')">
+          El nombre es requerido
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="form-group" align="center">
+      <button class="btn btn-dark"  [disabled]="paqueteService.formularioPaquetes.invalid"  type="submit"><i class="fa fa-save"></i> Guardar</button>
+      <button class="btn btn-danger" type="submit" style="margin-left: 8px;"><i class="fa fa-times"></i>
+        cancelar</button>
+    </div>
+  
+  </form> -->

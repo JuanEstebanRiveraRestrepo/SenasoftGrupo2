@@ -2,7 +2,7 @@
   <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
 </mat-form-field>
   
-  <table mat-table [dataSource]="administradorService.listaP" matSort  style="background-color:#E9ECEF; vertical-align:middle" class="table table-hover">
+  <table mat-table [dataSource]="administradorService.listaP" matSort  style="background-color:#E9ECEF; vertical-align:middle" >
 
 
     <ng-container matColumnDef="Cedula" >

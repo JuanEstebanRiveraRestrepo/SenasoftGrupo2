@@ -8,8 +8,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from conexion import mongo
 
+from flask_cors import CORS
+
 Usuario = Blueprint('usuario', __name__)
 
+CORS(Usuario)
 
 #Ruta y Metodo para obtener usuarios
 @Usuario.route('/usuario')

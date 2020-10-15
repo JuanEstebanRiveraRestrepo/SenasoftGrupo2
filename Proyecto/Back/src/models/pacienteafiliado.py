@@ -6,7 +6,11 @@ from flask.globals import request
 from conexion import mongo
 from models.pacientefamiliar import crearPacienteFamiliar
 
+from flask_cors import CORS
+
 PacienteAfiliado = Blueprint('pacienteaf', __name__)
+
+CORS(PacienteAfiliado)
 
 #Ruta y Metodo para obtener pacientes afiliado
 @PacienteAfiliado.route('/pacienteaf')
@@ -89,5 +93,28 @@ def crearPacienteFamiliarDelTitula(id):
 def buscarGrupoFamiliar(id):    
     grupofamiliar = mongo.db.pacientefamiliar.find({'titular': id})
     respuesta = json_util.dumps(grupofamiliar)
+    return respuesta
+
+@PacienteAfiliado.route('/pacienteaf/doctor/<id>', methods=['PUT'])
+def cambiarDoctor(id):
+    grupofamiliar = mongo.db.pacientefamiliar.find({'titular': id})
+    respuesta = json_util.dumps(grupofamiliar)
+    
+    medico = request.json['medico']
+    
+    if medico:
+        mongo.db.pacientefamiliar.update({'titular': id}, {'$set':{
+            'medico': medico
+        }})
+        
+        respuesta = jsonify("se actualizo el doctor del grupo familair")
+    return respuesta 
+    
+    
+@PacienteAfiliado.route('/iniciosesion/<correo>')
+def iniciarSesion(correo):         
+        
+    usuario = mongo.db.usuario.find_one({'correo': correo})
+    respuesta = json_util.dumps(usuario)
     return respuesta
     

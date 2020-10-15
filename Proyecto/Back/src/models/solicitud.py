@@ -19,7 +19,7 @@ def obtenerSolicitudes():
 def crearSolicitud(id):     
     paciente = id
     
-    resultado = json.dumps(mongo.db.pacienteafiliado.find_one({'_id': ObjectId(id)}, ))
+    resultado = json.dumps(mongo.db.pacienteafiliado.find_one({'_id': ObjectId(id)}))
     pacienteencode = json.loads(resultado)        
     medicoAnterior = pacienteencode['medico']
     medicoCambio = request.json['medicoCambio']

@@ -29,11 +29,7 @@
               "src/styles.css"
             ],
             "scripts": [
-<<<<<<< HEAD
               "node_modules/jquery/dist/jquery.min.js",
-=======
-              "./node_modules/jquery/dist/jquery.min.js",
->>>>>>> 4f6a712f5d177995e7c55520eb246b95ef5de659
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]

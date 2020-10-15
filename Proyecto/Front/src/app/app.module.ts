@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {MatCardModule} from '@angular/material/card';
     AppRoutingModule,
     BrowserAnimationsModule,
     AdministradorModule, MatFormFieldModule, FormsModule, ReactiveFormsModule,
-    MatInputModule,MatButtonModule,MatTableModule,MatPaginatorModule,MatCardModule
+    MatInputModule,MatButtonModule,MatTableModule,MatPaginatorModule,MatCardModule,HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

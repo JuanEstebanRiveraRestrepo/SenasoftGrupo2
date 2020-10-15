@@ -24,16 +24,21 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { AppRoutingModule } from '../app-routing.module';
 import {MatCardModule} from '@angular/material/card';
 
+import { AdministradorService } from '../services/administrador.service';
+
 
 @NgModule({
   declarations: [AdministradorComponent, MedicoComponent, PacienteComponent, PacienteFamiliarComponent, CrearMedicoComponent, ListarMedicoComponent, DetalleMedicoComponent],
   imports: [
     CommonModule,MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule,MatButtonModule,
     MatTableModule,MatPaginatorModule,MatToolbarModule,MatIconModule,CdkTableModule,MatSortModule,
-    DragDropModule,AppRoutingModule,MatCardModule
+    DragDropModule,AppRoutingModule,MatCardModule,
   ],
   exports:[
     AdministradorComponent
+  ],
+  providers:[
+    AdministradorService
   ]
 })
 export class AdministradorModule { }

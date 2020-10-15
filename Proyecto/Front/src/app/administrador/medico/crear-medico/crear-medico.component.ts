@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {AdministradorService} from '../../../services/administrador.service'
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  AdministradorService
+} from '../../../services/administrador.service'
 import {
   FormBuilder,
   FormControl,
@@ -10,6 +15,9 @@ import {
 import {
   ErrorStateMatcher
 } from '@angular/material/core';
+import {
+  Medico
+} from 'src/app/models/medico';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -25,7 +33,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class CrearMedicoComponent implements OnInit {
 
-  constructor( private formBuilder: FormBuilder, public administradorService:AdministradorService ) {}
+  constructor(private formBuilder: FormBuilder, public administradorService: AdministradorService) {}
   exRegularLetras: any = "^[a-zA-ZÀ-ÿ\u00f1\u00d1 _]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1 _]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 _]+$";
   exRegularNumeros: any = "^[0-9]*$";
 
@@ -54,20 +62,67 @@ export class CrearMedicoComponent implements OnInit {
   Direccion = new FormControl('', [
     Validators.required,
   ]);
+  Cargo = new FormControl('', [
+    Validators.required,
+    Validators.pattern(this.exRegularLetras),
+  ]);
+
+  Especialidad = new FormControl('', [
+    Validators.required,
+    Validators.pattern(this.exRegularLetras),
+  ]);
 
   matcher = new MyErrorStateMatcher();
 
   invalido() {
-    if (this.Nombre.valid && this.Email.valid && this.Telefono.valid && this.CC.valid )
+    if (this.Nombre.valid && this.Email.valid && this.Telefono.valid && this.CC.valid)
       return true;
     else
       return false;
   }
 
+  medico: Medico = {
+    cedula: "",
+    nombre: "",
+    apellido: "",
+    telefono: "",
+    direccion: "",
+    cargo: "",
+    especialidad: ""
+  }
+
   onSubmit() {
+
+    this.medico = {
+      cedula: this.CC.value,
+      nombre: this.Nombre.value,
+      apellido: this.Apellidos.value,
+      telefono: this.Telefono.value,
+      direccion: this.Direccion.value,
+      cargo: this.Cargo.value,
+      especialidad: this.Especialidad.value
+    }
+
+    console.log(this.medico)
+
+    this.administradorService.medico = this.medico
+
+    this.administradorService.crear().subscribe(r => {
+      console.log(r);
+
+
+      window.location.reload();
+    })
+
+
+   
+
+
   }
 
-  ngOnInit(): void {
-  }
+ 
+    
 
+
+  ngOnInit(): void {}
 }

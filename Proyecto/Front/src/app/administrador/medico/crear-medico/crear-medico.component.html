@@ -76,8 +76,33 @@
       </mat-form-field>
     </div>
 
+    <div align="center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Cargo</mat-label>
+        <input matInput [formControl]="Cargo" [errorStateMatcher]="matcher" placeholder="Ej. Pérez">
+        <mat-error *ngIf=" Cargo.hasError('pattern') && !Cargo.hasError('required')">
+          Por favor, introduce solo letras
+        </mat-error>
+        <mat-error *ngIf="Cargo.hasError('required')">
+          El Apellido <strong>es requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div align="center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Especialidad</mat-label>
+        <input matInput [formControl]="Especialidad" [errorStateMatcher]="matcher" placeholder="Ej. Pérez">
+        <mat-error *ngIf=" Especialidad.hasError('pattern') && !Especialidad.hasError('required')">
+          Por favor, introduce solo letras
+        </mat-error>
+        <mat-error *ngIf="Especialidad.hasError('required')">
+          El Apellido <strong>es requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
     <div class="example-button-row">
-      <button mat-flat-button color="primary" type="submit">Guardar</button>
+      <button mat-flat-button color="primary" type="submit"  >Guardar</button>
     </div>
 
   </div>

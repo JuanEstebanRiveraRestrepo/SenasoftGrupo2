@@ -1,12 +1,9 @@
 export interface Medico {
-    id:number;
-    Nombre: string;
-    Apellidos: string;
-    Telefono: string;
-    Email: string;
-    Cedula:string;
-    Direccion: string;
-    Cargo:string;
-    Especialidad:string;
-    Usuario:number;
+    nombre: string;
+    apellido: string;
+    telefono: string;
+    cedula:string;
+    direccion: string;
+    cargo:string;
+    especialidad:string;
 }

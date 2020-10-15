@@ -6,20 +6,20 @@ import json
 
 from conexion import mongo
 
-Solicitud = Blueprint('solicitud', __name__)
+Peticion = Blueprint('peticion', __name__)
 
-@Solicitud.route('/solicitud')
-def obtenerSolicitudes():
-    solicitudes = mongo.db.solicitud.find()
-    respuesta = json_util.dumps(solicitudes)
+@Peticion.route('/solicitud')
+def obtenerPeticion():
+    peticiones = mongo.db.peticion.find()
+    respuesta = json_util.dumps(peticiones)
     
     return respuesta 
 
-@Solicitud.route('/solicitud/<id>', methods=['POST'])
-def crearSolicitud(id):     
+@Peticion.route('/solicitud/<id>', methods=['POST'])
+def crearPeticion(id):     
     paciente = id
     
-    resultado = json.dumps(mongo.db.pacienteafiliado.find_one({'_id': ObjectId(id)}, ))
+    resultado = json.dumps(mongo.db.peticion.find_one({'_id': ObjectId(id)}, {'medico': 1, '_id': 0}))
     pacienteencode = json.loads(resultado)        
     medicoAnterior = pacienteencode['medico']
     medicoCambio = request.json['medicoCambio']
@@ -27,7 +27,7 @@ def crearSolicitud(id):
     
             
     if paciente and medicoCambio and motivo:         
-        mongo.db.solicitud.insert({  
+        mongo.db.peticion.insert({  
                                    
             'paciente': id,
             'medicoAnterior': medicoAnterior,
@@ -38,20 +38,20 @@ def crearSolicitud(id):
     return jsonify({'mensaje': 'Se agrego la solicitud'}) 
     
 
-@Solicitud.route('/solicitud/<id>')
+@Peticion.route('/solicitud/<id>')
 def buscarSolicitud(id):
-    medico = mongo.db.solicitud.find_one({'_id': ObjectId(id)})
+    medico = mongo.db.peticion.find_one({'_id': ObjectId(id)})
     respuesta = json_util.dumps(medico)
     return respuesta
     
-@Solicitud.route('/solicitud/<id>', methods=['PUT'])
+@Peticion.route('/solicitud/<id>', methods=['PUT'])
 def editarSolicitud(id):            
     medicoCambio = request.json['medicoCambio']
     motivo = request.json['motivo']
     
     
     if medicoCambio and motivo:
-        mongo.db.solicitud.update_one({'_id': ObjectId(id)}, {'$set': {                                    
+        mongo.db.peticion.update_one({'_id': ObjectId(id)}, {'$set': {                                    
             'medicoCambio': medicoCambio,
             'motivo': motivo                    
         }})            
@@ -59,7 +59,7 @@ def editarSolicitud(id):
         respuesta = jsonify({'mensaje': 'se edito el medico'}) 
         return respuesta   
 
-@Solicitud.route('/solicitud/<id>', methods=['DELETE'])
+@Peticion.route('/solicitud/<id>', methods=['DELETE'])
 def eliminarSolicitud(id):
-    mongo.db.solicitud.delete_one({'_id': ObjectId(id)})
+    mongo.db.peticion.delete_one({'_id': ObjectId(id)})
     return jsonify({'mensaje': 'se elimino el medico'}) 

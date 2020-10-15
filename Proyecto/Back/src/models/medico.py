@@ -16,7 +16,7 @@ def obtenerMedicos():
     return respuesta 
 
 @Medico.route('/medico', methods=['POST'])
-def creaMedicos():
+def creaMedico():
     cedula = request.json['cedula']
     nombre = request.json['nombre']
     apellido = request.json['apellido']
@@ -40,13 +40,20 @@ def creaMedicos():
         return jsonify({'mensaje': 'Se agrego medico'}) 
 
 @Medico.route('/medico/<id>')
-def buscarUsuario(id):
+def buscarMedico(id):
     medico = mongo.db.medico.find_one({'_id': ObjectId(id)})
     respuesta = json_util.dumps(medico)
     return respuesta
     
+@Medico.route('/medico/buscar/<nombre>')
+def buscarMedicoPorNombre(nombre):
+    medico = mongo.db.medico.find_one({'nombre': nombre}, {'nombre': 1} )
+    respuesta = json_util.dumps(medico)
+    return respuesta
+        
+    
 @Medico.route('/medico/<id>', methods=['PUT'])
-def editarUsuario(id):
+def editarMedico(id):
     cedula = request.json['cedula']
     nombre = request.json['nombre']
     apellido = request.json['apellido']
@@ -71,6 +78,6 @@ def editarUsuario(id):
         return respuesta   
 
 @Medico.route('/medico/<id>', methods=['DELETE'])
-def eliminarUsuario(id):
+def eliminarMedico(id):
     mongo.db.medico.delete_one({'_id': ObjectId(id)})
     return jsonify({'mensaje': 'se elimino el medico'}) 

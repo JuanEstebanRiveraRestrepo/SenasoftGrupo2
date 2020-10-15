@@ -16,6 +16,7 @@ export class ServicioService {
   listaUsuarios:Usuario[];
 
   seleccionarUsuario: Usuario = {
+    id: '',
     cedula : '',
     nombre : '',
     apellido : '',
@@ -27,9 +28,17 @@ export class ServicioService {
   constructor(private http: HttpClient) { }
 
   guardarUsuario(){
-    this.usuario = this.formularioRegistroPaciente.value;
     console.log(this.usuario)
      return this.http.post(this.rootURL + '/pacienteaf', this.usuario);
+  }
+
+  editarUsuario(){
+    console.log(this.usuario);
+    return this.http.put(this.rootURL + '/pacienteaf/' + this.usuario.id, this.usuario);
+  }
+
+  eliminarUsuario(id){
+    return this.http.delete(this.rootURL + '/pacienteaf/' + id);
   }
 
   listarUsuarios(){

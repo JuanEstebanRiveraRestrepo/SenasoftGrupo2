@@ -1,9 +1,11 @@
-<app-administrador></app-administrador>
 
-<h1>hola</h1>
+
+
+
 <form [formGroup]="servicioService.formularioRegistroPaciente" (ngSubmit)="onSubmit()">
     <div class="contenedor">
 
+      <input type="text" formControlName="id" name="id" >
       <mat-form-field class="example-full-width">
         <mat-label>Cedula</mat-label>
         <input matInput  placeholder="Ej. 1000111222" formControlName="cedula" name="cedula">
@@ -97,6 +99,8 @@
 
     <div class="example-button-row">
       <button mat-flat-button color="primary"  type="submit">Guardar</button>
+      <a [routerLink]="['/administrador/paciente/crear-paciente/crear-paciente.component.html']">Ver lista</a>
+      <a href="/administrador/paciente/crear-paciente/crear-paciente.component.html">Ver lista</a>
     </div>
   </div>
 </form>

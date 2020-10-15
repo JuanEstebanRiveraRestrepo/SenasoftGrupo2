@@ -20,4 +20,13 @@ export class CrearPacienteComponent implements OnInit {
     this.ServicioService.formularioRegistroPaciente.patchValue(usuario);
   }
 
+  eliminarUsuario(id){
+    if(confirm("¿Deseas eliminar ha este paciente?"))
+      this.ServicioService.eliminarUsuario(id).subscribe(
+        respuesta =>{
+          this.ServicioService.listarUsuarios();
+        }
+      );
+  }
+
 }

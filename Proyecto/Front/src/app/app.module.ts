@@ -12,8 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
-import { FlxUiDataTable, FlxUiDatatableModule } from 'flx-ui-datatable';
-
+import { RouterModule } from '@angular/router';
 
 
 
@@ -26,9 +25,10 @@ import { FlxUiDataTable, FlxUiDatatableModule } from 'flx-ui-datatable';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AdministradorModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, MatInputModule,MatButtonModule, HttpClientModule, MatTableModule, FlxUiDatatableModule
+    AdministradorModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, MatInputModule,MatButtonModule, HttpClientModule,
+    MatTableModule, RouterModule
   ],
-  providers: [ServicioService, FlxUiDataTable],
+  providers: [ServicioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

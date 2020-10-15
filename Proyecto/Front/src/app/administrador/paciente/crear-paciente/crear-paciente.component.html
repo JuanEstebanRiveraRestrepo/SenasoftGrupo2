@@ -11,14 +11,15 @@
   </tr>
 </thead>
 <tbody>
-  <tr *ngFor="let usuario of ServicioService.listarUsuarios">
+  <tr *ngFor="let usuario of ServicioService.listaUsuarios">
     <td (click)="llenarFormularioPaciente(usuario)">{{usuario.cedula}}</td>
     <td (click)="llenarFormularioPaciente(usuario)">{{usuario.nombre}}</td>
     <td (click)="llenarFormularioPaciente(usuario)">{{usuario.apellido}}</td>
     <td (click)="llenarFormularioPaciente(usuario)">{{usuario.telefono}}</td>
-    <td (click)="llenarFormularioPaciente(usuario)">{{usuario.correo}}</td>
+   <!-- <td (click)="llenarFormularioPaciente(usuario)">{{usuario.Correo}}</td>-->
     <td (click)="llenarFormularioPaciente(usuario)">{{usuario.medico}}</td>
     <td (click)="llenarFormularioPaciente(usuario)">{{usuario.direccion}}</td>
+    <i (click)="eliminarUsuario(usuario.cedula)" class="fa fa-trash fa-lg - text-primary"></i>
   </tr>
 </tbody>
 </table>

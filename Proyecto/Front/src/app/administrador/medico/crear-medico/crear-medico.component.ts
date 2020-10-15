@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {AdministradorService} from '../../../services/administrador.service'
 import {
   FormBuilder,
   FormControl,
-  FormGroup,
   FormGroupDirective,
   NgForm,
   Validators
@@ -25,7 +25,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class CrearMedicoComponent implements OnInit {
 
-  constructor( private formBuilder: FormBuilder, ) {}
+  constructor( private formBuilder: FormBuilder, public administradorService:AdministradorService ) {}
   exRegularLetras: any = "^[a-zA-ZÀ-ÿ\u00f1\u00d1 _]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1 _]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1 _]+$";
   exRegularNumeros: any = "^[0-9]*$";
 
@@ -51,9 +51,6 @@ export class CrearMedicoComponent implements OnInit {
     Validators.required,
     Validators.pattern(this.exRegularNumeros),
   ]);
-  Contrasena = new FormControl('', [
-    Validators.required,
-  ]);
   Direccion = new FormControl('', [
     Validators.required,
   ]);
@@ -61,11 +58,11 @@ export class CrearMedicoComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   invalido() {
-    if (this.Nombre.valid && this.Email.valid && this.Telefono.valid && this.CC.valid && this.Contrasena.valid)
+    if (this.Nombre.valid && this.Email.valid && this.Telefono.valid && this.CC.valid )
       return true;
     else
       return false;
-  }  
+  }
 
   onSubmit() {
   }

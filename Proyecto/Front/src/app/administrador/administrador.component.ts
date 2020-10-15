@@ -12,4 +12,36 @@ export class AdministradorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  menu = true;
+  contenido = true;
+  salud = false;
+  comunidad = false;
+  informacion = false;
+
+  mc() {
+    this.contenido = true;
+    this.salud = false;
+    this.comunidad = false;
+    this.informacion = false;
+    
+  }
+  ms() {
+    this.contenido = false;
+    this.salud = true;
+    this.comunidad = false;
+    this.informacion = false;
+  }
+  mco() {
+    this.contenido = false;
+    this.salud = false;
+    this.comunidad = true;
+    this.informacion = false;
+  }
+  mi() {
+    this.contenido = false;
+    this.salud = false;
+    this.comunidad = false;
+    this.informacion = true;
+  }
+
 }

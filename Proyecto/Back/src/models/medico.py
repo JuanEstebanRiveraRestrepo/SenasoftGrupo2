@@ -1,9 +1,11 @@
 from bson.objectid import ObjectId
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from bson import json_util
-from flask.globals import request
+
+
 
 from conexion import mongo
+from flask_mail import Mail, Message
 
 
 Medico = Blueprint('medico', __name__)
@@ -94,3 +96,4 @@ def buscarPacientesMedico(id):
     respuesta = json_util.dumps(pacientes)
     return respuesta
     
+

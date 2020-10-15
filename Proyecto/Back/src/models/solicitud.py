@@ -2,11 +2,9 @@ from bson.objectid import ObjectId
 from flask import Blueprint, jsonify
 from bson import json_util
 from flask.globals import request
-
+import json
 
 from conexion import mongo
-
-
 
 Solicitud = Blueprint('solicitud', __name__)
 
@@ -17,17 +15,21 @@ def obtenerSolicitudes():
     
     return respuesta 
 
-@Solicitud.route('/solicitud', methods=['POST'])
-def crearSolicitud():
-    paciente = request.json['paciente']
-    medicoAnterior = request.json['medicoAnterior']
+@Solicitud.route('/solicitud/<id>', methods=['POST'])
+def crearSolicitud(id):     
+    paciente = id
+    
+    resultado = json.dumps(mongo.db.pacienteafiliado.find_one({'_id': ObjectId(id)}, {'medico': 1, '_id': 0}))
+    pacienteencode = json.loads(resultado)        
+    medicoAnterior = pacienteencode['medico']
     medicoCambio = request.json['medicoCambio']
     motivo = request.json['motivo']
     
             
-    if paciente and medicoAnterior and medicoCambio and motivo:         
-        mongo.db.solicitud.insert({        
-            'paciente': paciente,
+    if paciente and medicoCambio and motivo:         
+        mongo.db.solicitud.insert({  
+                                   
+            'paciente': id,
             'medicoAnterior': medicoAnterior,
             'medicoCambio': medicoCambio,
             'motivo': motivo                         
@@ -43,25 +45,15 @@ def buscarSolicitud(id):
     return respuesta
     
 @Solicitud.route('/solicitud/<id>', methods=['PUT'])
-def editarSolicitud(id):
-    cedula = request.json['cedula']
-    nombre = request.json['nombre']
-    apellido = request.json['apellido']
-    telefono = request.json['telefono']
-    direccion = request.json['direccion']
-    cargo = request.json['cargo']
-    especialidad = request.json['especialidad']
+def editarSolicitud(id):            
+    medicoCambio = request.json['medicoCambio']
+    motivo = request.json['motivo']
     
     
-    if cedula and nombre and cargo and telefono:
-        mongo.db.solicitud.update_one({'_id': ObjectId(id)}, {'$set': {            
-            'cedula': cedula,
-            'nombre': nombre,
-            'apellido': apellido,
-            'telefono': telefono, 
-            'direccion': direccion,
-            'cargo': cargo,
-            'especialidad': especialidad        
+    if medicoCambio and motivo:
+        mongo.db.solicitud.update_one({'_id': ObjectId(id)}, {'$set': {                                    
+            'medicoCambio': medicoCambio,
+            'motivo': motivo                    
         }})            
         
         respuesta = jsonify({'mensaje': 'se edito el medico'}) 

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 
 from models.rol import Rol
 from models.usuario import Usuario
@@ -7,8 +7,14 @@ from models.pacienteafiliado import PacienteAfiliado
 from models.solicitud import Solicitud
 from models.pacientefamiliar import PacienteFamiliar
 
+from flask_mail import Mail
+from flask_mail import  Message
+import smtplib
+from email.message import EmailMessage
+
 
 app = Flask(__name__)
+
 
 
 #Registro de Blueprint para utilizar aplicaciones fue de app

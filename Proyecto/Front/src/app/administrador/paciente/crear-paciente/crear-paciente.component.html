@@ -1,0 +1,25 @@
+<table class="table table-hover">
+<thead>
+  <tr>
+    <th scope="col">Cédula</th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Apellido</th>
+    <th scope="col">Teléfono</th>
+    <th scope="col">Correo</th>
+    <th scope="col">Médico</th>
+    <th scope="col">Dirección</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let usuario of ServicioService.listaUsuarios">
+    <td (click)="llenarFormularioPaciente(usuario)">{{usuario.cedula}}</td>
+    <td (click)="llenarFormularioPaciente(usuario)">{{usuario.nombre}}</td>
+    <td (click)="llenarFormularioPaciente(usuario)">{{usuario.apellido}}</td>
+    <td (click)="llenarFormularioPaciente(usuario)">{{usuario.telefono}}</td>
+   <!-- <td (click)="llenarFormularioPaciente(usuario)">{{usuario.Correo}}</td>-->
+    <td (click)="llenarFormularioPaciente(usuario)">{{usuario.medico}}</td>
+    <td (click)="llenarFormularioPaciente(usuario)">{{usuario.direccion}}</td>
+    <i (click)="eliminarUsuario(usuario.cedula)" class="fa fa-trash fa-lg - text-primary"></i>
+  </tr>
+</tbody>
+</table>
